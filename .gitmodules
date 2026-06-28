@@ -1,0 +1,12 @@
+[submodule "gesap-kinal-api"]
+	path = gesap-kinal-api
+	url = git@github.com:JackFallas/gesap-kinal-api.git
+[submodule "client-kinal-admin"]
+	path = client-kinal-admin
+	url = git@github.com:JackFallas/client-kinal-admin.git
+[submodule "client-kinal-enfermero"]
+	path = client-kinal-enfermero
+	url = git@github.com:JackFallas/client-kinal-enfermero.git
+[submodule "client-kinal-alumno"]
+	path = client-kinal-alumno
+	url = git@github.com:JackFallas/client-kinal-alumno.git
