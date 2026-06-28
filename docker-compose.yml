@@ -1,0 +1,47 @@
+# =============================================
+# KINAL-GESAP — levanta PostgreSQL + API
+# Ejecutar: docker compose up -d --build
+# =============================================
+
+version: '3.8'
+
+services:
+  kinal-postgres:
+    image: postgres:15-alpine
+    container_name: kinal-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: GesapServer2026!
+      POSTGRES_DB: gesap_kinal_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - kinal_postgres_data:/var/lib/postgresql/data
+    networks:
+      - kinal-network
+
+  kinal-api:
+    build: ./gesap-kinal-api
+    container_name: kinal-api
+    restart: always
+    ports:
+      - "3003:3003"
+    env_file:
+      - ./gesap-kinal-api/.env
+    environment:
+      DATABASE_URL: postgresql://postgres:GesapServer2026!@kinal-postgres:5432/gesap_kinal_db
+    volumes:
+      - kinal_uploads:/app/uploads
+    depends_on:
+      - kinal-postgres
+    networks:
+      - kinal-network
+
+volumes:
+  kinal_postgres_data:
+  kinal_uploads:
+
+networks:
+  kinal-network:
+    driver: bridge
