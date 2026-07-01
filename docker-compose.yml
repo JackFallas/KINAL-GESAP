@@ -32,7 +32,7 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres:GesapServer2026!@kinal-postgres:5432/gesap_kinal_db
     volumes:
-      - kinal_uploads:/app/uploads
+      - ./gesap-kinal-api/uploads:/app/uploads
     depends_on:
       - kinal-postgres
     networks:
@@ -40,7 +40,6 @@ services:
 
 volumes:
   kinal_postgres_data:
-  kinal_uploads:
 
 networks:
   kinal-network:
