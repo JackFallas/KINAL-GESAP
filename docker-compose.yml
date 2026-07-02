@@ -33,6 +33,7 @@ services:
       DATABASE_URL: postgresql://postgres:GesapServer2026!@kinal-postgres:5432/gesap_kinal_db
     volumes:
       - ./gesap-kinal-api/uploads:/app/uploads
+      - ./gesap-kinal-api/private-uploads:/app/private-uploads
     depends_on:
       - kinal-postgres
     networks:
